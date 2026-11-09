@@ -1,0 +1,35 @@
+# ARISE preset: AE x Kitsune
+TARGET: simpleae
+TARGET_DIR: targets/simpleae
+PROTOCOL: v1
+INPUT_SIZE: 79
+SEED: 20
+DBSCAN_MIN_SAMPLES: 10
+DBSCAN_EPS: 0.0
+ANCHOR_RATIO: 0.01
+FT_LR: 0.0001
+FT_WD: 0.0001
+FT_EPOCHS: 20
+FT_BATCH: 256
+FT_ACCUM: 1
+normal_dir: ../../data/simpleae/Kitsune/normal/
+attack_dir: ../../data/simpleae/Kitsune/attack/
+V1R:
+  reader: named
+  drop_cols: [src_ip, dst_ip, src_mac, dst_mac, timestamp]
+  file_end: 5
+  benign_test: {mode: split20}
+  benign_train: {mode: split80}
+  train_drop_inf: true
+  perclass_mult: 2
+  overall_types: all
+  overall_benign: mult2
+blur_attack_dict:
+  botnet: [Mirai_Botnet]
+  ddos:   [SSDP_Flood, SYN_DoS, SSL_Renegotiation]
+  scan:   [OS_Scan, Fuzzing]
+  MitM:   [Video_Injection, ARP_MitM, Active_Wiretap]
+params_dir: ./params/simpleae_kitsune/
+model_load_path: ./params/simpleae_kitsune/base.pkl
+RESULTS_V2: ../../results/simpleae_kitsune
+BENIGN_CACHE_DIR: ../../results/cache

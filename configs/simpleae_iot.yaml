@@ -1,0 +1,35 @@
+# ARISE preset: AE x IoT
+TARGET: simpleae
+TARGET_DIR: targets/simpleae
+PROTOCOL: v1
+INPUT_SIZE: 79
+SEED: 20
+DBSCAN_MIN_SAMPLES: 10
+DBSCAN_EPS: 0.0
+ANCHOR_RATIO: 0.01
+FT_LR: 0.0001
+FT_WD: 0.0001
+FT_EPOCHS: 20
+FT_BATCH: 256
+FT_ACCUM: 1
+normal_dir: ../../data/simpleae/Horus/normal/
+attack_dir: ../../data/simpleae/Horus/attack/
+V1R:
+  reader: named
+  drop_cols: [src_ip, dst_ip, src_mac, dst_mac, timestamp]
+  file_end: 5
+  benign_test: {mode: dir, begin: 4, end: 6}
+  benign_train: {mode: dir, begin: 0, end: 4}
+  train_drop_inf: true
+  perclass_mult: 2
+  overall_types: all
+  overall_benign: raw
+blur_attack_dict:
+  botnet: [mirai_kit_cut, aidra, mirai_router_filter, bashlite]
+  ddos:   [http_ddos, tcp_ddos_router, udp_ddos_router]
+  scan:   [os_scan, service_scan, port_scan_router]
+  theft:  [data_theft, keylogging]
+params_dir: ./params/simpleae_iot/
+model_load_path: ./params/simpleae_iot/base.pkl
+RESULTS_V2: ../../results/simpleae_iot
+BENIGN_CACHE_DIR: ../../results/cache

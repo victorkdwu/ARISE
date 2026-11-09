@@ -1,0 +1,35 @@
+# ARISE preset: AE x CIC-IDS2017
+TARGET: simpleae
+TARGET_DIR: targets/simpleae
+PROTOCOL: v1
+INPUT_SIZE: 79
+SEED: 20
+DBSCAN_MIN_SAMPLES: 10
+DBSCAN_EPS: 0.0
+ANCHOR_RATIO: 0.01
+FT_LR: 0.0001
+FT_WD: 0.0001
+FT_EPOCHS: 20
+FT_BATCH: 256
+FT_ACCUM: 1
+normal_dir: ../../data/simpleae/CIC-2017/normal/
+attack_dir: ../../data/simpleae/CIC-2017/attack/
+V1R:
+  reader: named
+  drop_cols: [src_ip, dst_ip, src_mac, dst_mac, timestamp]
+  file_end: 5
+  benign_test: {mode: dir, begin: 4, end: 6}
+  benign_train: {mode: dir, begin: 0, end: 4}
+  train_drop_inf: true
+  perclass_mult: 2
+  overall_types: all
+  overall_benign: raw
+blur_attack_dict:
+  botnet: [botnet]
+  ddos:   [ddos]
+  scan:   [scan]
+  brute:  [brute]
+params_dir: ./params/simpleae_cic2017/
+model_load_path: ./params/simpleae_cic2017/base.pkl
+RESULTS_V2: ../../results/simpleae_cic2017
+BENIGN_CACHE_DIR: ../../results/cache

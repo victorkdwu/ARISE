@@ -1,0 +1,33 @@
+# ARISE preset: HorusEye x CIC-IoT2023
+TARGET: horuseye
+TARGET_DIR: targets/horuseye
+PROTOCOL: v1
+INPUT_SIZE: 105
+SEED: 20
+DBSCAN_MIN_SAMPLES: 10
+DBSCAN_EPS: 0.0
+ANCHOR_RATIO: 0.001
+FT_LR: 0.0001
+FT_WD: 0.0001
+FT_EPOCHS: 20
+FT_BATCH: 256
+FT_ACCUM: 12
+normal_dir: ../../data/horuseye/CIC-IoT-2023/normal/
+attack_dir: ../../data/horuseye/CIC-IoT-2023/anomaly/
+NORMAL_SPLIT_MODE: file_slice
+NORMAL_TRAIN_BEGIN: 0
+NORMAL_TRAIN_END: 2
+NORMAL_TEST_BEGIN: 2
+NORMAL_TEST_END: 3
+FEATURE_HAS_FLOWID: true
+DROP_HEADER_ROWS: 1
+V1_LOADER: blur
+V1_OVERALL_FILTER: true
+blur_attack_dict:
+  DDoS: [DDoS-ACK_Fragmentation, DDoS-HTTP_Flood-, DDoS-ICMP_Flood, DDoS-ICMP_Fragmentation, DDoS-PSHACK_Flood, DDoS-RSTFINFlood, DDoS-SYN_Flood, DDoS-SlowLoris, DDoS-SynonymousIP_Flood, DDoS-TCP_Flood, DDoS-UDP_Flood, DDoS-UDP_Fragmentation]
+  Mirai: [Mirai-greeth_flood, Mirai-greip_flood, Mirai-udpplain]
+  Prob: [Recon-HostDiscovery, Recon-PingSweep, Recon-PortScan]
+params_dir: ./params/horuseye_cic23/
+model_load_path: ./params/horuseye_cic23/base.pkl
+RESULTS_V2: ../../results/horuseye_cic23
+BENIGN_CACHE_DIR: ../../results/cache

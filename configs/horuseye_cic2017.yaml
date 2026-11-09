@@ -1,0 +1,34 @@
+# ARISE preset: HorusEye x CIC-IDS2017
+TARGET: horuseye
+TARGET_DIR: targets/horuseye
+PROTOCOL: v1
+INPUT_SIZE: 105
+SEED: 20
+DBSCAN_MIN_SAMPLES: 10
+DBSCAN_EPS: 0.0
+ANCHOR_RATIO: 0.001
+FT_LR: 0.0001
+FT_WD: 0.0001
+FT_EPOCHS: 20
+FT_BATCH: 256
+FT_ACCUM: 12
+normal_dir: ../../data/horuseye/normal-kitsune_test/
+attack_dir: ../../data/horuseye/CIC-2017/attack/
+NORMAL_SPLIT_MODE: file_slice
+NORMAL_TRAIN_BEGIN: 0
+NORMAL_TRAIN_END: 4
+NORMAL_TEST_BEGIN: 4
+NORMAL_TEST_END: 6
+FEATURE_HAS_FLOWID: true
+DROP_HEADER_ROWS: 0
+V1_LOADER: per_attack
+V1_OVERALL_FILTER: false
+blur_attack_dict:
+  botnet: [botnet]
+  ddos:   [ddos]
+  scan:   [scan]
+  brute:  [brute]
+params_dir: ./params/horuseye_cic2017/
+model_load_path: ./params/horuseye_cic2017/base.pkl
+RESULTS_V2: ../../results/horuseye_cic2017
+BENIGN_CACHE_DIR: ../../results/cache

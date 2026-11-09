@@ -1,0 +1,62 @@
+{
+ "horuseye_iot": {
+  "chosen": "anchor_a0.9_m3",
+  "selection_pr_auc": 0.9976011668665359,
+  "grid_size": 9
+ },
+ "horuseye_cic2017": {
+  "chosen": "anchor_a0.9_m3",
+  "selection_pr_auc": 0.9988741330610162,
+  "grid_size": 9
+ },
+ "horuseye_cic23": {
+  "chosen": "anchor_a0.5_m0.5",
+  "selection_pr_auc": 0.8444051055917587,
+  "grid_size": 20
+ },
+ "horuseye_kitsune": {
+  "chosen": "anchor_a0.7_m1",
+  "selection_pr_auc": 0.9270289661735138,
+  "grid_size": 9
+ },
+ "kitnet_iot": {
+  "chosen": "anchor_a0.9_m3",
+  "selection_pr_auc": 0.8975859282542161,
+  "grid_size": 9
+ },
+ "kitnet_cic2017": {
+  "chosen": "anchor_a0.9_m3",
+  "selection_pr_auc": 0.8740576438636155,
+  "grid_size": 9
+ },
+ "kitnet_cic23": {
+  "chosen": "anchor_a0.7_m3",
+  "selection_pr_auc": 0.7652548730246601,
+  "grid_size": 9
+ },
+ "kitnet_kitsune": {
+  "chosen": "anchor_a0.9_m3",
+  "selection_pr_auc": 0.6219538814517489,
+  "grid_size": 9
+ },
+ "simpleae_iot": {
+  "chosen": "anchor_a0.9_m3",
+  "selection_pr_auc": 0.9940475265669868,
+  "grid_size": 9
+ },
+ "simpleae_cic2017": {
+  "chosen": "anchor_a0.5_m1",
+  "selection_pr_auc": 0.9999881844291753,
+  "grid_size": 9
+ },
+ "simpleae_cic23": {
+  "chosen": "anchor_a0.5_m1",
+  "selection_pr_auc": 0.5553216650068709,
+  "grid_size": 9
+ },
+ "simpleae_kitsune": {
+  "chosen": "anchor_a0.9_m2",
+  "selection_pr_auc": 0.9989342137736077,
+  "grid_size": 9
+ }
+}

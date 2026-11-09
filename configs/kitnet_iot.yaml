@@ -1,0 +1,34 @@
+# ARISE preset: KitNET x IoT
+TARGET: kitnet
+TARGET_DIR: targets/kitnet
+PROTOCOL: v1
+KITNET_UNTIE: true
+SEED: 20
+DBSCAN_MIN_SAMPLES: 10
+DBSCAN_EPS: 0.0
+ANCHOR_RATIO: 0.001
+FT_LR: 0.0001
+FT_WD: 0.0001
+FT_EPOCHS: 20
+FT_BATCH: 256
+FT_ACCUM: 1
+normal_dir: ../../data/horuseye/normal-kitsune_test/
+attack_dir: ../../data/horuseye/Anomaly/attack_kitsune/
+V1R:
+  reader: keep
+  drop_cols: [0]
+  file_end: 20
+  benign_test: {mode: dir, begin: 4, end: 6}
+  benign_train: {mode: dir, begin: 0, end: 4}
+  perclass_mult: 2
+  overall_types: all
+  overall_benign: raw
+blur_attack_dict:
+  botnet: [mirai_kit_abnormal, aidra, mirai_router_filter, bashlite]
+  ddos:   [tcp_ddos, udp_ddos, http_ddos]
+  scan:   [os_scan, service_scan]
+  theft:  [data_theft, keylogging]
+params_dir: ./params/kitnet_iot/
+model_load_path: ./params/kitnet_iot/base.pt
+RESULTS_V2: ../../results/kitnet_iot
+BENIGN_CACHE_DIR: ../../results/cache

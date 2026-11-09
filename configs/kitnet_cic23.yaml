@@ -1,0 +1,33 @@
+# ARISE preset: KitNET x CIC-IoT2023
+TARGET: kitnet
+TARGET_DIR: targets/kitnet
+PROTOCOL: v1
+KITNET_UNTIE: true
+SEED: 20
+DBSCAN_MIN_SAMPLES: 10
+DBSCAN_EPS: 0.0
+ANCHOR_RATIO: 0.001
+FT_LR: 0.0001
+FT_WD: 0.0001
+FT_EPOCHS: 20
+FT_BATCH: 256
+FT_ACCUM: 1
+normal_dir: ../../data/horuseye/CIC-IoT-2023/normal/
+attack_dir: ../../data/horuseye/CIC-IoT-2023/anomaly/
+V1R:
+  reader: drop
+  drop_cols: [0]
+  file_end: 20
+  benign_test: {mode: dir, begin: 2, end: 3}
+  benign_train: {mode: dir, begin: 0, end: 2}
+  perclass_mult: 2
+  overall_types: blur
+  overall_benign: raw
+blur_attack_dict:
+  DDoS: [DDoS-ACK_Fragmentation, DDoS-HTTP_Flood-, DDoS-ICMP_Flood, DDoS-ICMP_Fragmentation, DDoS-PSHACK_Flood, DDoS-RSTFINFlood, DDoS-SYN_Flood, DDoS-SlowLoris, DDoS-SynonymousIP_Flood, DDoS-TCP_Flood, DDoS-UDP_Flood, DDoS-UDP_Fragmentation]
+  Mirai: [Mirai-greeth_flood, Mirai-greip_flood, Mirai-udpplain]
+  Prob: [Recon-HostDiscovery, Recon-PingSweep, Recon-PortScan]
+params_dir: ./params/kitnet_cic23/
+model_load_path: ./params/kitnet_cic23/base.pt
+RESULTS_V2: ../../results/kitnet_cic23
+BENIGN_CACHE_DIR: ../../results/cache

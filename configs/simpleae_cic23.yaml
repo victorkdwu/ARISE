@@ -1,0 +1,38 @@
+# ARISE preset: AE x CIC-IoT2023
+TARGET: simpleae
+TARGET_DIR: targets/simpleae
+PROTOCOL: v1
+INPUT_SIZE: 79
+SEED: 20
+DBSCAN_MIN_SAMPLES: 10
+DBSCAN_EPS: 0.0
+ANCHOR_RATIO: 0.01
+FT_LR: 0.0001
+FT_WD: 0.0001
+FT_EPOCHS: 20
+FT_BATCH: 256
+FT_ACCUM: 1
+normal_dir: ../../data/simpleae/CIC-IoT-2023/normal/
+attack_dir: ../../data/simpleae/CIC-IoT-2023/attack/
+V1R:
+  reader: named
+  drop_cols: [src_ip, dst_ip, src_mac, dst_mac, timestamp]
+  file_end: 5
+  benign_test: {mode: dir, begin: 2, end: 3}
+  benign_train: {mode: dir, begin: 0, end: 2}
+  train_drop_inf: true
+  perclass_mult: 2
+  overall_types: blur
+  overall_benign: raw
+blur_attack_dict:
+  DDoS: [DDoS-ACK_Fragmentation, DDoS-HTTP_Flood-, DDoS-ICMP_Flood, DDoS-ICMP_Fragmentation, DDoS-PSHACK_Flood, DDoS-RSTFINFlood, DDoS-SYN_Flood, DDoS-SlowLoris, DDoS-SynonymousIP_Flood, DDoS-TCP_Flood, DDoS-UDP_Flood, DDoS-UDP_Fragmentation]
+  Mirai: [Mirai-greeth_flood, Mirai-greip_flood, Mirai-udpplain]
+  Prob: [Recon-HostDiscovery, Recon-PingSweep, Recon-PortScan]
+params_dir: ./params/simpleae_cic23/
+model_load_path: ./params/simpleae_cic23/base.pkl
+BASE_EPOCHS: 50
+BASE_LR: 0.0005
+BASE_WD: 0.001
+BASE_BATCH: 256
+RESULTS_V2: ../../results/simpleae_cic23
+BENIGN_CACHE_DIR: ../../results/cache
