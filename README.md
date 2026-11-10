@@ -46,7 +46,24 @@ Place the feature files under `data/` so that the `normal_dir` / `attack_dir` en
 | `data/kitnet_kitsune/{normal,attack}/` | KitNET × Kitsune | Kitsune dataset (KitNET feature files) |
 | `data/simpleae/{Horus,CIC-2017,CIC-IoT-2023,Kitsune}/{normal,attack}/` | AE × all | CICFlowMeter flow features |
 
-Download links for the feature files will be added here.
+The feature files are on Zenodo: **https://doi.org/10.5281/zenodo.24090637**
+
+| file | content |
+|---|---|
+| `ARISE-data-HorusEye.tar.gz` (4.3 GB) | the HorusEye (IoT) dataset |
+| `ARISE-data-public.tar` (9.2 GB) | `ARISE-data-CIC-IDS2017.tar.gz`, `ARISE-data-CIC-IoT2023.tar.gz`, `ARISE-data-Kitsune.tar.gz` |
+| `SHA256SUMS` | checksums of the two files above |
+
+Each dataset archive contains the files of all three target models and unpacks into `data/` when extracted at the
+root of this repository (the CIC-IDS2017 archive carries its own copy of the IoT benign traffic):
+
+```bash
+sha256sum -c SHA256SUMS
+tar -xzf ARISE-data-HorusEye.tar.gz
+tar -xf ARISE-data-public.tar && for f in ARISE-data-CIC-IDS2017.tar.gz ARISE-data-CIC-IoT2023.tar.gz ARISE-data-Kitsune.tar.gz; do tar -xzf $f; done
+```
+
+When using CIC-IDS2017, CIC-IoT2023, or Kitsune, please also cite the original datasets.
 
 ## Quick check: evaluate the released models
 
